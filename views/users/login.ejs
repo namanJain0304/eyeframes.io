@@ -1,0 +1,71 @@
+<% layout('/layouts/boilerplate') -%>
+
+<body>
+  <div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <!-- Card for Login Form -->
+          <div class="card shadow-sm">
+            <div class="card-header bg-success text-white text-center">
+              <h2 class="mb-0">Login</h2>
+            </div>
+            <div class="card-body p-4">
+              <form
+                action="/login"
+                method="post"
+                class="needs-validation"
+                novalidate
+              >
+                <!-- Username Field -->
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input
+                    name="username"
+                    id="username"
+                    placeholder="Enter Username"
+                    class="form-control"
+                    type="text"
+                    required
+                  />
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    name="password"
+                    id="password"
+                    placeholder="Enter Password"
+                    class="form-control"
+                    type="password"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Please provide your password.
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-success btn-block">
+                    Login
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Card Footer for Links or Additional Info -->
+            <div class="card-footer text-center">
+              <small class="text-muted"
+                >Don’t have an account?
+                <a href="/signup" class="text-success">Sign up here</a>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

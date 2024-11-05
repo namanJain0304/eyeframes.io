@@ -1,0 +1,405 @@
+<% layout('/layouts/boilerplate') -%>
+
+<style>
+  .tax-info {
+    display: none;
+  }
+
+  .tax-switch {
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+
+  .form-check-input:checked {
+    background-color: black; /* Change to black when checked */
+  }
+
+  /* Navbar z-index and background fix */
+  .navbar-collapse {
+    z-index: 9999 !important; /* Ensure navbar is above other content */
+    background-color: #212529;
+  }
+</style>
+
+<body>
+  <form id="filterForm" action="/eyeframes" method="GET">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+      <div class="container-fluid">
+        <!-- Navbar toggle button for mobile view -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Heading displayed only on smaller screens -->
+        <h5 class="text-white me-auto d-lg-none mb-2">
+          Expand to Apply Filters
+        </h5>
+
+        <!-- Navbar content -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Brand Filter -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <button
+                class="btn btn-dark dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Brand
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="brand"
+                      value="Ray-Ban"
+                    />
+                    Ray-Ban</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="brand"
+                      value="Oakley"
+                    />
+                    Oakley</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="brand"
+                      value="Channel"
+                    />
+                    Gucci</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="brand"
+                      value="Fasttrack"
+                    />
+                    Fasttrack</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="brand"
+                      value="Michael Kors"
+                    />
+                    Michael Kors</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="brand"
+                      value="Armani"
+                    />
+                    Armani</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="brand"
+                      value="Titan"
+                    />
+                    Titan</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- Material Filter -->
+            <li class="nav-item dropdown">
+              <button
+                class="btn btn-dark dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Material
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="material"
+                      value="Plastic"
+                    />
+                    Plastic</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="material"
+                      value="Acetate"
+                    />
+                    Acetate</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="material"
+                      value="Metal"
+                    />
+                    Metal</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="material"
+                      value="Wood"
+                    />
+                    Wood</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- Color Filter -->
+            <li class="nav-item dropdown">
+              <button
+                class="btn btn-dark dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Color
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="color"
+                      value="Black"
+                    />
+                    Black</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="color"
+                      value="Brown"
+                    />
+                    Brown</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="color"
+                      value="Blue"
+                    />
+                    Blue</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="color"
+                      value="Red"
+                    />
+                    Red</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="color"
+                      value="Silver"
+                    />
+                    Silver</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="color"
+                      value="Golden"
+                    />
+                    Golden</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="color"
+                      value="White"
+                    />
+                    White</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- Sort By Price -->
+            <li class="nav-item dropdown">
+              <button
+                class="btn btn-dark dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Sort By Price
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="radio"
+                      name="sortPrice"
+                      value="lowToHigh"
+                    />
+                    Low to High</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="radio"
+                      name="sortPrice"
+                      value="highToLow"
+                    />
+                    High to Low</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <!-- Apply Filters Button -->
+          <div class="d-flex">
+            <button type="submit" class="btn btn-primary">Apply Filters</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </form>
+
+  <!-- Tax Switch -->
+  <div class="tax-switch ms-auto">
+    <div class="form-check form-switch form-check-reverse">
+      <input
+        class="form-check-input mode"
+        type="checkbox"
+        id="flexSwitchCheckReverse"
+      />
+      <label class="form-check-label" for="flexSwitchCheckReverse"
+        ><strong>Display Price After Taxes</strong></label
+      >
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    <div
+      class="row row-cols-xxl-4 row-cols-xl-3 row-cols-lg-3 row-cols-md-2 row-cols-sm-1"
+    >
+      <% for (let frame of frames) { %>
+      <div class="col mb-3">
+        <a href="/eyeframes/<%= frame._id %>" class="frames-link">
+          <div class="my-card border border-dark" style="width: 18rem">
+            <img
+              src="<%= frame.image.url %>"
+              class="my-card-img-top"
+              alt="<%= frame.name %>"
+              style="height: 137px !important"
+            />
+            <div class="my-card-body">
+              <p class="card-text text-center text-black">
+                <b><%= frame.name %></b><br />
+                <b><%= frame.brand %></b><br />
+                <% if (frame.price != null) { %>
+                <i class="tax-info1"
+                  ><%= frame.price.toLocaleString("en-US", { style: "currency",
+                  currency: "USD" }) %></i
+                >
+                <i class="tax-info"
+                  ><%= (frame.price * 0.13 +
+                  frame.price).toLocaleString("en-US", { style: "currency",
+                  currency: "USD" }) %></i
+                >
+                <% } else { %> Price not available <% } %>
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <% } %>
+    </div>
+  </div>
+
+  <script>
+    let taxSwitch = document.getElementById("flexSwitchCheckReverse");
+    taxSwitch.addEventListener("click", function () {
+      let taxInfo = document.getElementsByClassName("tax-info");
+      let taxInfo1 = document.getElementsByClassName("tax-info1");
+
+      // Toggle the visibility of tax info
+      for (let info of taxInfo) {
+        if (info.style.display !== "inline") {
+          info.style.display = "inline"; // Show tax amount
+          for (let info1 of taxInfo1) {
+            info1.style.display = "none"; // Hide original price
+          }
+        } else {
+          info.style.display = "none"; // Hide tax amount
+          for (let info1 of taxInfo1) {
+            info1.style.display = "inline"; // Show original price
+          }
+        }
+      }
+    });
+  </script>
+</body>

@@ -1,0 +1,123 @@
+<% layout('/layouts/boilerplate') -%>
+
+<body>
+  <div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white text-center">
+              <h3 class="mb-0">Create a New Frame</h3>
+            </div>
+            <div class="card-body p-4">
+              <form
+                method="POST"
+                action="/eyeframes"
+                novalidate
+                class="needs-validation"
+                enctype="multipart/form-data"
+              >
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name:</label>
+                  <input
+                    name="frame[name]"
+                    placeholder="Enter Name, Keep it short and simple"
+                    class="form-control"
+                    type="text"
+                    required
+                  />
+                  <div class="valid-feedback">Name looks good</div>
+                  <div class="invalid-feedback">Enter a valid Name</div>
+                </div>
+
+                <div class="row">
+                  <div class="mb-3 col-md-6">
+                    <label for="brand" class="form-label">Brand:</label>
+                    <input
+                      name="frame[brand]"
+                      placeholder="Enter Brand"
+                      class="form-control"
+                      type="text"
+                      required
+                    />
+                    <div class="invalid-feedback">Enter a valid Brand Name</div>
+                  </div>
+                  <div class="mb-3 col-md-6">
+                    <label for="color" class="form-label">Color:</label>
+                    <input
+                      name="frame[color]"
+                      placeholder="Enter Color"
+                      class="form-control"
+                      type="text"
+                      required
+                    />
+                    <div class="invalid-feedback">Enter a valid Color</div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="mb-3 col-md-6">
+                    <label for="price" class="form-label">Price:</label>
+                    <input
+                      name="frame[price]"
+                      class="form-control"
+                      placeholder="Enter Price"
+                      type="number"
+                      required
+                    />
+                    <div class="invalid-feedback">Enter a valid Price</div>
+                  </div>
+
+                  <div class="mb-3 col-md-6">
+                    <label for="material" class="form-label">Material:</label>
+                    <input
+                      name="frame[material]"
+                      class="form-control"
+                      placeholder="Enter Material"
+                      type="text"
+                      required
+                    />
+                    <div class="invalid-feedback">Enter a valid Material</div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="image" class="form-label"
+                    >Upload Frame Image:</label
+                  >
+                  <input
+                    name="frame[image][url]"
+                    class="form-control"
+                    type="file"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Please upload a frame image
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="location" class="form-label">Location:</label>
+                  <input
+                    name="frame[location]"
+                    placeholder="Toronto, Canada"
+                    class="form-control"
+                    type="text"
+                    required
+                  />
+                  <div class="invalid-feedback">Enter a valid Location</div>
+                </div>
+
+                <div class="d-grid">
+                  <button class="btn btn-dark btn-block my-btn">
+                    Add Frame
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

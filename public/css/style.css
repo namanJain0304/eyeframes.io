@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Bubbles&family=Sixtyfour+Convergence&family=Tiny5&display=swap");
+body {
+  background-color: #f3f4f6 !important;
+  font-family: Arial, sans-serif;
+}
+
+.my-font {
+  font-family: "Rubik Bubbles", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.navbar {
+  height: 5rem;
+  background-color: white;
+}
+.fa-glasses {
+  color: black;
+  font-size: 2rem;
+}
+.nav-link {
+  color: black !important;
+}
+.my-card {
+  background-color: white !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease-in-out !important;
+  margin-bottom: 2rem !important;
+}
+.my-card:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+.my-card-img-top {
+  width: 100% !important;
+  height: auto !important;
+}
+.my-card-body {
+  padding: 0 !important;
+}
+.frames-link {
+  text-decoration: none;
+}
+
+.my-btn {
+  margin-left: 1rem;
+  height: fit-content !important;
+  width: fit-content !important;
+}
+.my-img {
+  height: 50vh;
+  width: 50vh !important;
+}
+.my-footer {
+  height: 2vh;
+}
+
+.review-card {
+  border: 2px solid black !important;
+}
+
+#map {
+  height: 400px;
+  width: 80vw;
+  margin-bottom: 5px;
+}

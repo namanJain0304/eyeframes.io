@@ -1,0 +1,146 @@
+<% layout('/layouts/boilerplate') -%>
+
+<body>
+  <div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white text-center">
+              <h3 class="mb-0">Edit Frame</h3>
+            </div>
+            <div class="card-body p-4">
+              <form
+                method="POST"
+                action="/eyeframes/<%= frame._id %>?_method=PUT"
+                novalidate
+                class="needs-validation"
+                enctype="multipart/form-data"
+              >
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name:</label>
+                  <input
+                    name="frame[name]"
+                    placeholder="Enter Name"
+                    class="form-control"
+                    type="text"
+                    value="<%= frame.name %>"
+                    required
+                  />
+                  <div class="valid-feedback">Name looks good</div>
+                  <div class="invalid-feedback">Enter a valid Name</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="brand" class="form-label">Brand:</label>
+                    <input
+                      name="frame[brand]"
+                      placeholder="Enter Brand"
+                      class="form-control"
+                      type="text"
+                      value="<%= frame.brand %>"
+                      required
+                    />
+                    <div class="invalid-feedback">Enter a valid Brand Name</div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="color" class="form-label">Color:</label>
+                    <input
+                      name="frame[color]"
+                      placeholder="Enter Color"
+                      class="form-control"
+                      type="text"
+                      value="<%= frame.color %>"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Enter a valid Frame Color
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="price" class="form-label">Price:</label>
+                    <input
+                      name="frame[price]"
+                      class="form-control"
+                      placeholder="Enter Price"
+                      type="number"
+                      value="<%= frame.price %>"
+                      required
+                    />
+                    <div class="invalid-feedback">Enter a valid Price</div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="material" class="form-label">Material:</label>
+                    <input
+                      name="frame[material]"
+                      class="form-control"
+                      placeholder="Enter Material"
+                      type="text"
+                      value="<%= frame.material %>"
+                      required
+                    />
+                    <div class="invalid-feedback">Enter a valid Material</div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Original Image Preview:</label
+                  ><br />
+                  <img
+                    src="<%= originalImageUrl %>"
+                    class="img-fluid rounded"
+                    alt="Original Frame Image"
+                    style="
+                      border: 2px solid #000;
+                      padding: 5px;
+                      border-radius: 5px;
+                      width: 200px;
+                      height: 100px;
+                    "
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="image" class="form-label"
+                    >Upload New Image:</label
+                  >
+                  <input
+                    name="frame[image][url]"
+                    class="form-control"
+                    type="file"
+                    value="<%= originalImageUrl %>"
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="location" class="form-label">Location:</label>
+                  <input
+                    name="frame[location]"
+                    placeholder="Toronto, Canada"
+                    class="form-control"
+                    type="text"
+                    value="<%= frame.location %>"
+                    required
+                  />
+                  <div class="invalid-feedback">Enter a valid Location</div>
+                </div>
+
+                <div class="d-grid">
+                  <button class="btn btn-dark btn-block my-btn">
+                    Update Frame
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

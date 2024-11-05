@@ -1,0 +1,85 @@
+<% layout('/layouts/boilerplate') -%>
+
+<body>
+  <div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <!-- Card for SignUp Form -->
+          <div class="card shadow-sm">
+            <div class="card-header bg-success text-white text-center">
+              <h2 class="mb-0">Sign Up</h2>
+            </div>
+            <div class="card-body p-4">
+              <form
+                action="/signup"
+                method="post"
+                class="needs-validation"
+                novalidate
+              >
+                <!-- Username Field -->
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input
+                    name="username"
+                    id="username"
+                    placeholder="Enter Username"
+                    class="form-control"
+                    type="text"
+                    required
+                  />
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <!-- Email Field -->
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    name="email"
+                    id="email"
+                    placeholder="Enter Email"
+                    class="form-control"
+                    type="email"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Please provide a valid email.
+                  </div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    name="password"
+                    id="password"
+                    placeholder="Enter Password"
+                    class="form-control"
+                    type="password"
+                    required
+                  />
+                  <div class="invalid-feedback">Please provide a password.</div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-success btn-block">
+                    Sign Up
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Card Footer for Links or Additional Info -->
+            <div class="card-footer text-center">
+              <small class="text-muted"
+                >Already have an account?
+                <a href="/login" class="text-success">Log in here</a>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

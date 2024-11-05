@@ -1,0 +1,238 @@
+<% layout('/layouts/boilerplate') -%>
+<style>
+  body {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+
+  .card {
+    border: none;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-title {
+    color: #2c3e50;
+    font-weight: bold;
+  }
+
+  .details {
+    margin-bottom: 15px;
+  }
+
+  .details span {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+
+  .btn-edit {
+    background-color: #3498db;
+    color: #fff;
+  }
+
+  .btn-delete {
+    background-color: #e74c3c;
+    color: #fff;
+  }
+
+  .btn-edit:hover {
+    background-color: #2980b9;
+  }
+
+  .btn-delete:hover {
+    background-color: #c0392b;
+  }
+  .review-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+</style>
+<body>
+  <script>
+    const mapToken = "<%= process.env.MAP_TOKEN %>";
+    const coordinates = JSON.parse(
+      "<%= JSON.stringify(frame.geometry.coordinates) %>"
+    );
+    console.log("Coordinates from EJS:", coordinates);
+  </script>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card p-4">
+          <div class="text-center">
+            <img
+              src="<%= frame.image.url %>"
+              class="img-fluid mb-3"
+              alt="Eyeframe Image"
+              style="max-height: 200px"
+            />
+            <h5 class="card-title"><%= frame.name %></h5>
+          </div>
+          <div class="details">
+            <p><span>Brand:</span> <%= frame.brand %></p>
+            <p><span>Color:</span> <%= frame.color %></p>
+            <p><span>Material:</span> <%= frame.material %></p>
+            <p><span>Price:</span> <%= frame.price %></p>
+          </div>
+          <% if (currUser && currUser._id.equals(frame.owner._id)) { %>
+          <div class="d-flex text-center justify-content-evenly">
+            <a
+              href="/eyeframes/<%= frame._id %>/edit"
+              class="btn btn-edit mr-2"
+            >
+              Edit
+            </a>
+            <form
+              method="POST"
+              action="/eyeframes/<%=frame._id%>?_method=DELETE"
+            >
+              <button class="btn btn-delete">Delete</button>
+            </form>
+          </div>
+          <% } %>
+          <p class="card-text text-muted text-center mt-4">
+            For further queries, please contact the owner<strong>
+              <%= frame.owner.username %> </strong
+            >at
+            <a href="mailto:<%= frame.owner.email %>" class="text-primary">
+              <%= frame.owner.email %>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if (currUser) { %>
+
+  <hr />
+
+  <div class="container">
+    <h3>
+      <strong><u>Leave a Review </u></strong>
+    </h3>
+    <form
+      action="/eyeframes/<%=frame._id%>/reviews"
+      method="post"
+      novalidate
+      class="needs-validation"
+    >
+      <div>
+        <label for="rating"><strong>Rating</strong></label>
+        <fieldset class="starability-slot">
+          <input
+            type="radio"
+            id="no-rate"
+            class="input-no-rate"
+            name="review[rating]"
+            value="0"
+            checked
+            aria-label="No rating."
+          />
+          <input
+            type="radio"
+            id="first-rate1"
+            name="review[rating]"
+            value="1"
+          />
+          <label for="first-rate1" title="Terrible">1 star</label>
+          <input
+            type="radio"
+            id="first-rate2"
+            name="review[rating]"
+            value="2"
+          />
+          <label for="first-rate2" title="Not good">2 stars</label>
+          <input
+            type="radio"
+            id="first-rate3"
+            name="review[rating]"
+            value="3"
+          />
+          <label for="first-rate3" title="Average">3 stars</label>
+          <input
+            type="radio"
+            id="first-rate4"
+            name="review[rating]"
+            value="4"
+          />
+          <label for="first-rate4" title="Very good">4 stars</label>
+          <input
+            type="radio"
+            id="first-rate5"
+            name="review[rating]"
+            value="5"
+          />
+          <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset>
+      </div>
+      <div>
+        <label class="form-label" for="comment"
+          ><strong> Comment</strong></label
+        >
+        <textarea
+          class="form-control m-2"
+          id="comment"
+          name="review[comment]"
+          cols="30"
+          rows="10"
+          required
+        ></textarea>
+        <div class="invalid-feedback">Enter A Comment</div>
+      </div>
+      <button class="btn btn-dark">Submit</button>
+    </form>
+  </div>
+  <% } %>
+  <hr />
+  <div class="container">
+    <h1 class="mb-3">
+      <strong><u>All Reviews</u></strong>
+    </h1>
+    <% if (frame.review.length > 0) { %>
+    <div class="row d-flex justify-content-evenly">
+      <% for(review of frame.review) { %>
+      <div class="card col-md-3 m-3 review-card p-3">
+        <div class="card-body">
+          <h5 class="card-title text-black">@<%= review.author.username %></h5>
+
+          <p
+            class="starability-result card-text mb-2"
+            data-rating="<%= review.rating %>"
+          >
+            <%= review.rating %>
+          </p>
+          <p class="card-text text-muted"><%= review.comment %></p>
+        </div>
+        <form
+          method="post"
+          action="/eyeframes/<%= frame._id %>/reviews/<%= review._id %>?_method=DELETE"
+        >
+          <button class="btn btn-outline-dark btn-sm">Delete</button>
+        </form>
+      </div>
+      <% } %>
+    </div>
+
+    <% } else { %>
+    <h3 class="">No reviews yet!</h3>
+    <% } %>
+  </div>
+  <hr />
+  <div class="container">
+    <h1 class="mb-3">
+      <strong><u>Where to Get Your EyeFrame</u></strong>
+    </h1>
+    <div class="row d-flex justify-content-center align-items-center">
+      <div id="map"></div>
+    </div>
+  </div>
+  <script src="/js/script.js"></script>
+  <script src="/js/map.js"></script>
+</body>
