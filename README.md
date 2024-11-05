@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>README - EyeFrames.io</title>
-</head>
+
 <body>
 
   <h1>EyeFrames.io</h1>
@@ -121,4 +115,4 @@
   <p>Contributions are welcome! Feel free to submit a pull request or open an issue.</p>
 
 </body>
-</html>
+
