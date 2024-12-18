@@ -63,6 +63,7 @@
                       type="checkbox"
                       name="brand"
                       value="Ray-Ban"
+                      <%= Array.isArray(brand) && brand.includes("Ray-Ban") || brand === "Ray-Ban" ? "checked" : "" %>
                     />
                     Ray-Ban</a
                   >
@@ -73,9 +74,11 @@
                       class="form-check-input me-2"
                       type="checkbox"
                       name="brand"
-                      value="Oakley"
+                      value="Calvin Klein"
+                      <%= Array.isArray(brand) && brand.includes("Calvin Klein") || brand === "Calvin Klein" ? "checked" : "" %>
+
                     />
-                    Oakley</a
+                    Calvin Klein</a
                   >
                 </li>
                 <li>
@@ -84,8 +87,23 @@
                       class="form-check-input me-2"
                       type="checkbox"
                       name="brand"
-                      value="Channel"
+                      value="Coach"
+                      <%= Array.isArray(brand) && brand.includes("Coach") || brand === "Coach" ? "checked" : "" %>
                     />
+                    Coach</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      name="brand"
+                      value="Gucci"
+                      <%= Array.isArray(brand) && brand.includes("Gucci") || brand === "Gucci" ? "checked" : "" %>
+
+                    />
+                    
                     Gucci</a
                   >
                 </li>
@@ -95,9 +113,10 @@
                       class="form-check-input me-2"
                       type="checkbox"
                       name="brand"
-                      value="Fasttrack"
+                      value="Prada"
+                      <%= Array.isArray(brand) && brand.includes("Prada") || brand === "Prada" ? "checked" : "" %>
                     />
-                    Fasttrack</a
+                    Prada</a
                   >
                 </li>
                 <li>
@@ -106,9 +125,11 @@
                       class="form-check-input me-2"
                       type="checkbox"
                       name="brand"
-                      value="Michael Kors"
+                      value="Tom Ford"
+                      <%= Array.isArray(brand) && brand.includes("Tom Ford") || brand === "Tom Ford" ? "checked" : "" %>
+
                     />
-                    Michael Kors</a
+                    Tom Ford</a
                   >
                 </li>
                 <li>
@@ -117,20 +138,10 @@
                       class="form-check-input me-2"
                       type="checkbox"
                       name="brand"
-                      value="Armani"
+                      value="Versace"
+                      <%= Array.isArray(brand) && brand.includes("Versace") || brand === "Versace" ? "checked" : "" %>
                     />
-                    Armani</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#"
-                    ><input
-                      class="form-check-input me-2"
-                      type="checkbox"
-                      name="brand"
-                      value="Titan"
-                    />
-                    Titan</a
+                    Versace</a
                   >
                 </li>
               </ul>
@@ -153,7 +164,8 @@
                       type="checkbox"
                       name="material"
                       value="Plastic"
-                    />
+                      <%= Array.isArray(material) && material.includes("Plastic") || material === "Plastic" ? "checked" : "" %>
+                      />
                     Plastic</a
                   >
                 </li>
@@ -164,6 +176,8 @@
                       type="checkbox"
                       name="material"
                       value="Acetate"
+                      <%= Array.isArray(material) && material.includes("Acetate") || material === "Acetate" ? "checked" : "" %>
+
                     />
                     Acetate</a
                   >
@@ -175,6 +189,8 @@
                       type="checkbox"
                       name="material"
                       value="Metal"
+                      <%= Array.isArray(material) && material.includes("Metal") || material === "Metal" ? "checked" : "" %>
+
                     />
                     Metal</a
                   >
@@ -186,6 +202,8 @@
                       type="checkbox"
                       name="material"
                       value="Wood"
+                      <%= Array.isArray(material) && material.includes("Wood") || material === "Wood" ? "checked" : "" %>
+
                     />
                     Wood</a
                   >
@@ -210,6 +228,8 @@
                       type="checkbox"
                       name="color"
                       value="Black"
+                      <%= Array.isArray(color) && color.includes("Black") || color === "Black" ? "checked" : "" %>
+
                     />
                     Black</a
                   >
@@ -221,7 +241,8 @@
                       type="checkbox"
                       name="color"
                       value="Brown"
-                    />
+                      <%= Array.isArray(color) && color.includes("Brown") || color === "Brown" ? "checked" : "" %>
+                      />
                     Brown</a
                   >
                 </li>
@@ -232,7 +253,8 @@
                       type="checkbox"
                       name="color"
                       value="Blue"
-                    />
+                      <%= Array.isArray(color) && color.includes("Blue") || color === "Blue" ? "checked" : "" %>
+                      />
                     Blue</a
                   >
                 </li>
@@ -243,7 +265,8 @@
                       type="checkbox"
                       name="color"
                       value="Red"
-                    />
+                      <%= Array.isArray(color) && color.includes("Red") || color === "Red" ? "checked" : "" %>
+                      />
                     Red</a
                   >
                 </li>
@@ -254,7 +277,8 @@
                       type="checkbox"
                       name="color"
                       value="Silver"
-                    />
+                      <%= Array.isArray(color) && color.includes("Silver") || color === "Silver" ? "checked" : "" %>
+                      />
                     Silver</a
                   >
                 </li>
@@ -265,7 +289,8 @@
                       type="checkbox"
                       name="color"
                       value="Golden"
-                    />
+                      <%= Array.isArray(color) && color.includes("Golden") || color === "Golden" ? "checked" : "" %>
+                      />
                     Golden</a
                   >
                 </li>
@@ -276,6 +301,8 @@
                       type="checkbox"
                       name="color"
                       value="White"
+                      <%= Array.isArray(color) && color.includes("White") || color === "White" ? "checked" : "" %>
+
                     />
                     White</a
                   >
@@ -300,6 +327,9 @@
                       type="radio"
                       name="sortPrice"
                       value="lowToHigh"
+                      <%= sortPrice === "lowToHigh" ? "checked" : "" %>
+
+
                     />
                     Low to High</a
                   >
@@ -311,6 +341,8 @@
                       type="radio"
                       name="sortPrice"
                       value="highToLow"
+                      <%= sortPrice === "highToLow" ? "checked" : "" %>
+
                     />
                     High to Low</a
                   >

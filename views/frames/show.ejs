@@ -62,6 +62,24 @@
     );
     console.log("Coordinates from EJS:", coordinates);
   </script>
+
+<% if (savings !== null) { %>
+  <div
+    class="alert alert-success alert-dismissible fade show text-center mt-2"
+    role="alert"
+  >
+    🎉 Your total savings are: 
+    <%= savings.toLocaleString("en-US", { style: "currency", currency: "USD" }) %>!
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+<% } %>
+
+
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
@@ -197,27 +215,23 @@
     </h1>
     <% if (frame.review.length > 0) { %>
     <div class="row d-flex justify-content-evenly">
-      <% for(review of frame.review) { %>
-      <div class="card col-md-3 m-3 review-card p-3">
-        <div class="card-body">
-          <h5 class="card-title text-black">@<%= review.author.username %></h5>
-
-          <p
-            class="starability-result card-text mb-2"
-            data-rating="<%= review.rating %>"
-          >
-            <%= review.rating %>
-          </p>
-          <p class="card-text text-muted"><%= review.comment %></p>
+      <% for (review of frame.review) { %>
+        <div class="card col-md-3 m-3 review-card p-3">
+          <div class="card-body">
+            <h5 class="card-title text-black">@<%= review.author.username %></h5>
+            <p class="starability-result card-text mb-2" data-rating="<%= review.rating %>">
+              <%= review.rating %>
+            </p>
+            <p class="card-text text-muted"><%= review.comment %></p>
+          </div>
+          <% if (currUser && currUser._id.equals(review.author._id)) { %>
+          <form method="post" action="/eyeframes/<%= frame._id %>/reviews/<%= review._id %>?_method=DELETE">
+            <button class="btn btn-outline-dark btn-sm">Delete</button>
+          </form>
+          <% } %>
         </div>
-        <form
-          method="post"
-          action="/eyeframes/<%= frame._id %>/reviews/<%= review._id %>?_method=DELETE"
-        >
-          <button class="btn btn-outline-dark btn-sm">Delete</button>
-        </form>
-      </div>
-      <% } %>
+        <% } %>
+        
     </div>
 
     <% } else { %>

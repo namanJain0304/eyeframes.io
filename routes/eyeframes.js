@@ -10,6 +10,7 @@ const multer = require("multer");
 const { storage } = require("../cloudConfig.js");
 const upload = multer({ storage });
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
+const Scrapedframes = require("../models/scrapedframes.js");
 const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
@@ -52,7 +53,10 @@ router.get(
     }
 
     const frames = await query.exec();
-    res.render("frames/index.ejs", { frames });
+    res.render("frames/index.ejs", { frames, brand: req.query.brand,
+      material: req.query.material,
+      color: req.query.color,
+      sortPrice: req.query.sortPrice});
   })
 );
 
@@ -78,8 +82,26 @@ router.get(
       req.flash("error", "Sorry, We cant find your Eyeframe");
       res.redirect("/eyeframes");
     }
-    res.render("frames/show.ejs", { frame });
-  })
+    // Fetch all scraped frames
+  const scrapedFrames = await Scrapedframes.find();
+  //console.log(scrapedFrames);
+  
+  // Match logic: find a scraped frame where brandName matches description 
+  // and frameName matches title
+  let savings = null;
+  for (const webframe of scrapedFrames) {
+    console.log(webframe.brandName);
+    const priceString = webframe.scrapedPrice;
+    const priceNumber = parseFloat(priceString.replace('$', ''));
+    if (frame.brand === webframe.brandName && frame.name === webframe.frameName) {
+      console.log("trueeee");
+      savings = priceNumber - frame.price;
+      break;
+    }
+  }
+    //console.log(frame);
+    res.render("frames/show.ejs", { frame, savings });
+  }) 
 );
 router.get(
   "/:id/edit",

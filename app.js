@@ -3,7 +3,7 @@ if (process.env.NODE_ENV != "production") {
 }
 
 const mongoose = require("mongoose");
-const dbUrl=process.env.MONGOATLAS_URL;
+//const dbUrl=process.env.MONGOATLAS_URL;
 
 main()
   .then((res) => {
@@ -12,7 +12,7 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(dbUrl);
+  await mongoose.connect("mongodb://127.0.0.1:27017/eyeframes");
 }
 const express = require("express");
 var engine = require("ejs-mate");
@@ -45,23 +45,23 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 const userRoutes = require("./routes/user.js");
 
-const store= MongoStore.create(
-  {
-    mongoUrl: dbUrl,
-    crypto :{
-      secret: process.env.SECRET,
-    },
-    touchAfter: 24 * 60 * 60,
-  }
-);
-store.on("error",()=>{
-  console.log("session store error",err);
-})
+// const store= MongoStore.create(
+//   {
+//     mongoUrl: dbUrl,
+//     crypto :{
+//       secret: process.env.SECRET,
+//     },
+//     touchAfter: 24 * 60 * 60,
+//   }
+// );
+// store.on("error",()=>{
+//   console.log("session store error",err);
+// })
 
 
 app.use(
   session({
-    store,
+    //store,
     secret:process.env.SECRET,
     resave: false,
     saveUninitialized: true,
